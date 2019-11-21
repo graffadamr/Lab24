@@ -1,8 +1,16 @@
 package co.grandcircus.Lab24;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Users {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private Integer id;
 	private String fname;
 	private String lname;
 	private String email;
@@ -29,7 +37,7 @@ public class Users {
 		this.phone = phone;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

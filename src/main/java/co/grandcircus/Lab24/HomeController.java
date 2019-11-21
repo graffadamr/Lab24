@@ -9,35 +9,28 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	
 	@Autowired
-	ProductDao dao;
+	ProductRepo pr;
 	
 	@Autowired
-	UsersDao dao2;
+	UsersRepo ur;
 
 	@RequestMapping("/")
 	public ModelAndView home() {
-		System.out.println(dao.findAllProducts());
-		return new ModelAndView("index", "productList", dao.findAllProducts());
+		System.out.println(pr.findAll());
+		return new ModelAndView("index", "productList", pr.findAll());
 	}
 	
 
 	@RequestMapping("register")
 	public String register() {
-		System.out.println("BACON!!!!!!!!!!!!!!!");
 		return "register";
 	}
 	
-//	@RequestMapping("complete-page")
-//	public String registerPage() {
-//		return "complete-page";
-//	}
 	
 	@RequestMapping("complete-page")
 	public ModelAndView updateUsers(Users users) {
-		System.out.println("BACON");
 		System.out.println(users);
-		dao2.updateUsers(users);
-		System.out.println("bacon");
+		ur.save(users);
 		return new ModelAndView("complete-page");
 		
 	}
